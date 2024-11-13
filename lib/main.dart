@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:handlerapp/menu.dart';
+import 'package:handlerapp/screens/menu.dart';
 
 void main() {
   runApp(const MyApp());
@@ -11,12 +11,12 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Handlerapp',
+      title: 'Flutter Demo',
       theme: ThemeData(
         colorScheme: ColorScheme.fromSwatch(
-          primarySwatch: Colors.blue,
+          primarySwatch: Colors.lightBlue,
         ).copyWith(
-          secondary: Colors.blueGrey,
+          secondary: Colors.lightBlueAccent[300],
         ),
         useMaterial3: true,
       ),

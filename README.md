@@ -36,3 +36,33 @@ Saya membuat kelas itemcard pada folder lib tepatnya pada menu.dart, saya membua
 
 #### membuat tombol memanggil popcat
 saya menggunakan fungsi material dan InkWell untuk memberikan tampilan dan respon untuk setiap tombol. terdapat fungsi ontap pada InkWell untuk menangani klik pada tombol
+
+
+
+## Tugas 8 Flutter Navigation, Layouts, Forms, and Input Elements
+
+### Apa kegunaan const di Flutter? Jelaskan apa keuntungan ketika menggunakan const pada kode Flutter. Kapan sebaiknya kita menggunakan const, dan kapan sebaiknya tidak digunakan?
+
+pada program flutter (dart), const digunakan untuk elemen elemen yang bersifat statis atau tidak berubah di state manapun. const akan selalu ada pada tempatnya dan akan bernilai sama dari awal sampai akhir. keuntungan dari penggunaan const adalah penghematan memory karena dia tidak membutuhkan perkembangan atau perubahan. sebaiknya kita menggunakan const untuk variabel yang tetap misalnya kolom padding dan sebagainya. hal ini karena beberapa kolom atau padding tidak akan berubah nilainya sampai akhir program (seperti pada PesananForm saya).
+
+ ### Jelaskan dan bandingkan penggunaan Column dan Row pada Flutter. Berikan contoh implementasi dari masing-masing layout widget ini!
+
+ Column dan row merupakan pengaturan layout widget pada flutter. Column akan mengatur lokasi secara vertikal sedangkan row akan mengatur lokasi secara horizontal. dalam program saya, saya menggunakan row untuk mengatur tombol sejajar pada menu (tambah, lihat, dan logout). sedangkan untuk column sendiri saya menggunakannya pada input form pada pesanan_form.
+
+ ### Sebutkan apa saja elemen input yang kamu gunakan pada halaman form yang kamu buat pada tugas kali ini. Apakah terdapat elemen input Flutter lain yang tidak kamu gunakan pada tugas ini? Jelaskan!
+
+ dalam pengerjaan tugas 8 ini, saya hanya menggunakan textformfield untuk namaPesanan, keterangan, dan jumlahPesanan karena menurut saya itu yang paling sederhana. saya menggunakan filter untuk membatasi input seperti hanya boleh huruf, tidak boleh negatif dan sebagainya. dalam flutter sendiri ada beberapa input yang bisa digunakan seperti checkbox untuk memilih ya atau tidak, radio untuk memilih beberapa kategori, slider untuk memilih nilai pada rentang tertentu dalam slider, dan sebagainya
+
+ ### Bagaimana cara kamu mengatur tema (theme) dalam aplikasi Flutter agar aplikasi yang dibuat konsisten? Apakah kamu mengimplementasikan tema pada aplikasi yang kamu buat?
+
+ pada aplikasi flutter saya, saya mengatur tema yang konsisten. saya mendeklarasikan Warna utama dan warna sekunder yang akan digunakan sebagai tema aplikasi saya dengan code
+ ```
+Saya menggunakan ColorScheme.fromSwatch() untuk mengatur primarySwatch dengan warna Colors.lightBlue.
+Warna sekunder diatur melalui .copyWith(secondary: Colors.lightBlueAccent[300]), yang memberikan aksen atau warna tambahan dalam aplikasi.
+```
+Di AppBar pada menu.dart, saya menggunakan 
+```
+    Theme.of(context).colorScheme.primary
+```
+untuk warna latar belakang sehingga konsisten dengan warna utama.
+
