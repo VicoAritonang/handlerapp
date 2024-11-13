@@ -56,10 +56,18 @@ pada program flutter (dart), const digunakan untuk elemen elemen yang bersifat s
  ### Bagaimana cara kamu mengatur tema (theme) dalam aplikasi Flutter agar aplikasi yang dibuat konsisten? Apakah kamu mengimplementasikan tema pada aplikasi yang kamu buat?
 
  pada aplikasi flutter saya, saya mengatur tema yang konsisten. saya mendeklarasikan Warna utama dan warna sekunder yang akan digunakan sebagai tema aplikasi saya dengan code
+
+Saya menggunakan 
  ```
-Saya menggunakan ColorScheme.fromSwatch() untuk mengatur primarySwatch dengan warna Colors.lightBlue.
-Warna sekunder diatur melalui .copyWith(secondary: Colors.lightBlueAccent[300]), yang memberikan aksen atau warna tambahan dalam aplikasi.
+ ColorScheme.fromSwatch()
+ ``` 
+untuk mengatur primarySwatch dengan warna Colors.lightBlue.
+Warna sekunder diatur melalui 
 ```
+.copyWith(secondary: Colors.lightBlueAccent[300]),
+```
+ yang memberikan aksen atau warna tambahan dalam aplikasi.
+
 Di AppBar pada menu.dart, saya menggunakan 
 ```
     Theme.of(context).colorScheme.primary
