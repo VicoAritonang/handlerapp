@@ -10,8 +10,8 @@ class MyHomePage extends StatelessWidget {
   MyHomePage({super.key});
 
   final List<ItemHomepage> items = [
-    ItemHomepage("Lihat Pesanan", Icons.production_quantity_limits),
-    ItemHomepage("Tambah Pesanan", Icons.add),
+    ItemHomepage("Lihat Pesanan", Icons.mood),
+    ItemHomepage("Buat Pesanan", Icons.add),
     ItemHomepage("Logout", Icons.logout),
   ];
 
@@ -20,7 +20,7 @@ class MyHomePage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: const Text(
-          'Handler App',
+          'Handlerapp',
           style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
         ),
         backgroundColor: Theme.of(context).colorScheme.primary,
@@ -47,7 +47,7 @@ class MyHomePage extends StatelessWidget {
                   const Padding(
                     padding: EdgeInsets.only(top: 16.0),
                     child: Text(
-                      'Selamat datang di App Handler',
+                      'Selamat datang di handler app',
                       style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18.0),
                     ),
                   ),

@@ -1,6 +1,11 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:handlerapp/widgets/drawer.dart';
 import 'package:handlerapp/screens/menu.dart';
+import 'package:pbp_django_auth/pbp_django_auth.dart';
+import 'package:provider/provider.dart';
+
 
 class PesananEntryFormPage extends StatefulWidget {
   const PesananEntryFormPage({super.key});
@@ -17,6 +22,7 @@ class _PesananEntryFormPageState extends State<PesananEntryFormPage> {
 
   @override
   Widget build(BuildContext context) {
+    final request = context.watch<CookieRequest>();
     return Scaffold(
       appBar: AppBar(
         title: const Center(
@@ -127,37 +133,38 @@ class _PesananEntryFormPageState extends State<PesananEntryFormPage> {
                       backgroundColor: MaterialStateProperty.all(
                           Theme.of(context).colorScheme.primary),
                     ),
-                    onPressed: () {
+                  onPressed: () async {
                       if (_formKey.currentState!.validate()) {
-                        showDialog(
-                          context: context,
-                          builder: (context) {
-                            return AlertDialog(
-                              title: const Text('Pesanan berhasil dibuat'),
-                              content: SingleChildScrollView(
-                                child: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Text('Nama Pesanan: $_namaPesanan'),
-                                    Text('Keterangan: $_keterangan'),
-                                    Text('Jumlah Pesanan: $_jumlahPesanan'),
-                                  ],
-                                ),
-                              ),
-                              actions: [
-                                TextButton(
-                                  child: const Text('OK'),
-                                  onPressed: () {
-                                    Navigator.pop(context);
-                                    _formKey.currentState!.reset();
-                                  },
-                                ),
-                              ],
+                          // Kirim ke Django dan tunggu respons
+                          // TODO: Ganti URL dan jangan lupa tambahkan trailing slash (/) di akhir URL!
+                          final response = await request.postJson(
+                              "http://127.0.0.1:8000/create-flutter/",
+                              jsonEncode(<String, dynamic>{
+                                'nama_pesanan': _namaPesanan,
+                                'keterangan': _keterangan,
+                                'jumlah_pesanan': _jumlahPesanan,
+                              }),
                             );
-                          },
-                        );
+                          if (context.mounted) {
+                              if (response['status'] == 'success') {
+                                  ScaffoldMessenger.of(context)
+                                      .showSnackBar(const SnackBar(
+                                  content: Text("Pesanan berhasil disimpan!"),
+                                  ));
+                                  Navigator.pushReplacement(
+                                      context,
+                                      MaterialPageRoute(builder: (context) => MyHomePage()),
+                                  );
+                              } else {
+                                  ScaffoldMessenger.of(context)
+                                      .showSnackBar(const SnackBar(
+                                      content:
+                                          Text("Terdapat kesalahan, silakan coba lagi."),
+                                  ));
+                              }
+                          }
                       }
-                    },
+                  },
                     child: const Text(
                       "Save",
                       style: TextStyle(color: Colors.white),

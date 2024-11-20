@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:handlerapp/screens/menu.dart';
 import 'package:handlerapp/screens/pesanan_form.dart';
+import 'package:handlerapp/screens/list_pesanan.dart';
 
 class LeftDrawer extends StatelessWidget {
   const LeftDrawer({super.key});
@@ -51,7 +52,7 @@ class LeftDrawer extends StatelessWidget {
             },
           ),
           ListTile(
-            leading: const Icon(Icons.mood),
+            leading: const Icon(Icons.production_quantity_limits),
             title: const Text('Tambah Pesanan'),
             onTap: () {
               Navigator.pushReplacement(
@@ -61,6 +62,17 @@ class LeftDrawer extends StatelessWidget {
                 ),
               );
             },
+          ),
+          ListTile(
+              leading: const Icon(Icons.production_quantity_limits_rounded),
+              title: const Text('Daftar Pesanan'),
+              onTap: () {
+                  // Route menu ke halaman mood
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => const PesananPage()),
+                  );
+              },
           ),
         ],
       ),

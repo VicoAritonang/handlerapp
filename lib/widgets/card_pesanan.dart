@@ -19,10 +19,13 @@ class CardPesanan extends StatelessWidget {
             ..showSnackBar(SnackBar(
                 content: Text("Kamu telah menekan tombol ${item.name}!")));
 
-          if (item.name == "Tambah Pesanan") {
-            Navigator.push(context,
-                MaterialPageRoute(builder: (context) => const PesananEntryFormPage()));
-          }
+          if (item.name == "Buat Pesanan") {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => const PesananEntryFormPage()),
+              );
+}
+
         },
         child: Container(
           padding: const EdgeInsets.all(8),
