@@ -33,7 +33,7 @@ class _PesananPageState extends State<PesananPage> {
     final request = context.watch<CookieRequest>();
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Mood Entry List'),
+        title: const Text('Daftar Pesanan: '),
       ),
       drawer: const LeftDrawer(),
       body: FutureBuilder(
@@ -46,7 +46,7 @@ class _PesananPageState extends State<PesananPage> {
               return const Column(
                 children: [
                   Text(
-                    'Belum ada data mood pada mental health tracker.',
+                    'Belum ada pesanan yang dibuat',
                     style: TextStyle(fontSize: 20, color: Color(0xff59A5D8)),
                   ),
                   SizedBox(height: 8),
@@ -64,18 +64,18 @@ class _PesananPageState extends State<PesananPage> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        "${snapshot.data![index].fields.mood}",
+                        "${snapshot.data![index].fields.namaPesanan}",
                         style: const TextStyle(
                           fontSize: 18.0,
                           fontWeight: FontWeight.bold,
                         ),
                       ),
                       const SizedBox(height: 10),
-                      Text("${snapshot.data![index].fields.feelings}"),
+                      Text("${snapshot.data![index].fields.keterangan}"),
                       const SizedBox(height: 10),
-                      Text("${snapshot.data![index].fields.moodIntensity}"),
+                      Text("${snapshot.data![index].fields.jumlahPesanan}"),
                       const SizedBox(height: 10),
-                      Text("${snapshot.data![index].fields.time}")
+                      Text("${snapshot.data![index].fields.waktuPemesanan}")
                     ],
                   ),
                 ),

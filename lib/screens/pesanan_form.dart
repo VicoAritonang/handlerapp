@@ -139,11 +139,12 @@ class _PesananEntryFormPageState extends State<PesananEntryFormPage> {
                           // TODO: Ganti URL dan jangan lupa tambahkan trailing slash (/) di akhir URL!
                           final response = await request.postJson(
                               "http://127.0.0.1:8000/create-flutter/",
-                              jsonEncode(<String, dynamic>{
+                              jsonEncode(<String, String>{
                                 'nama_pesanan': _namaPesanan,
                                 'keterangan': _keterangan,
-                                'jumlah_pesanan': _jumlahPesanan,
+                                'jumlah_pesanan': _jumlahPesanan.toString(),
                               }),
+                              
                             );
                           if (context.mounted) {
                               if (response['status'] == 'success') {
